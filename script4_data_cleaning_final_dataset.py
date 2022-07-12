@@ -22,9 +22,10 @@ import pandas as pd
 # Importing data
 # -----------------------------------
 # Folder path for collated datasets
-collated_data_path = r'C:\Users\sneha\Desktop\MISM 6212 Data Mining\Final project\Submission\Collated data'
+path = os.getcwd()
+collated_data_path = path + r'\Collated data'
 # Folder path for saving final dataset
-final_data_path = r'C:\Users\sneha\Desktop\MISM 6212 Data Mining\Final project\Submission\Final dataset'
+final_data_path = path + r'\Final data'
 
 
 # Load the datasets
