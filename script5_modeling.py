@@ -16,7 +16,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-data = pd.read_csv(r"C:\Users\sneha\Desktop\MISM 6212 Data Mining\Final project\Submission\Final dataset\Final_dataset.csv")
+path = os.getcwd()
+data = pd.read_csv(path + r"\Final data\Final_dataset.csv")
 
 rename_dict = {'Month_year':'MONTH_YEAR','Year': 'YEAR', 'Month':'MONTH', 'County':'COUNTY','Median_Price': 'Median Price', 'Est_Population':'POPESTIMATE', 'Land_Area':'LAND_AREA','NO2_Cnct': 'NO2 Concentration', 'CO_Cnct':'CO Concentration', 'Ozone_Cnct':'Ozone Concentration', 'SO2_Cnct': 'SO2 Concentration', 'PM2.5_Cnct':'PM2.5 Concentration', 'Avg_Air_Temp':'TAVG', 'Avg_Wind_Spd': 'AWND' , 'Avg_Prec':'PRCP'}
 df = data.rename(columns = rename_dict)
