@@ -88,15 +88,16 @@ def extract_pollutantdata(data_path):
     
 
 def main():
+    path = os.getcwd()
     # Provide folder path for the downloaded housing and pollutant data files
-    housing_downloads_path = r'C:\Users\sneha\Desktop\MISM 6212 Data Mining\Final project\Submission\Downloaded data\Housing data'   
-    pollutant_downloads_path = r'C:\Users\sneha\Desktop\MISM 6212 Data Mining\Final project\Submission\Downloaded data\Pollutant data' 
+    housing_downloads_path = os.path.join(path+r'\Downloaded data\Housing data')   
+    pollutant_downloads_path = os.path.join(path+r'\Downloaded data\Pollutant Data')
     # housing_downloads_path should have the county housing pdf files
     # pollutant_downloads_path should have the csv files downloaded from EPA website for each year between 2016-2021
     # List of pollutants: CO, Ozone, PM2.5, PM10, NO2, SO2
     
     # Provide folder path for saving the collated datasets
-    collated_data_path = r'C:\Users\sneha\Desktop\MISM 6212 Data Mining\Final project\Submission\Collated data'
+    collated_data_path = os.path.join(path+r'\Collated data')
     
     pdfDirListing = os.listdir(housing_downloads_path)
     SingleFamilyData = pd.DataFrame()
