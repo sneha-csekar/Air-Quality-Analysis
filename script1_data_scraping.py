@@ -188,13 +188,13 @@ def main():
     now = datetime.now()
     print("-----------------------\nStarting housing data download...\nCurrent time:", now.strftime("%H:%M:%S"),'\n-----------------------')
     housing_web_path = r'https://www.marealtor.com/market-data/'
-    housing_downloads_path = os.path.join(path+r'\Data\Housing Data Downloads')
+    housing_downloads_path = os.path.join(path+r'\Downloaded data\Housing Data')
     download_housing_data(housing_web_path, housing_downloads_path)
 
     now = datetime.now()
     print("-----------------------\nStarting pollutant data download...\nCurrent time:", now.strftime("%H:%M:%S"),'\n-----------------------')
     pollutant_web_path =r'https://www.epa.gov/outdoor-air-quality-data/download-daily-data'
-    pollutant_downloads_path = os.path.join(path+r'\Data\Pollutant Data Downloads')
+    pollutant_downloads_path = os.path.join(path+r'\Downloaded data\Pollutant Data')
     download_pollutant_data(pollutant_web_path, pollutant_downloads_path)
     
     now = datetime.now()
@@ -206,12 +206,12 @@ def main():
         df = extract_county(filename)
         df['Year'] = pdfDirListing[i][:7]
         SingleFamilyData = SingleFamilyData.append(df)
-    SingleFamilyData.to_csv(os.path.join(path+r'\Data\Collated data\Housing_data.csv'), index=False)
+    SingleFamilyData.to_csv(os.path.join(path+r'\Collated data\Housing_data.csv'), index=False)
     
     now = datetime.now()
     print("-----------------------\nStarting pollutant data collation...\nCurrent time:", now.strftime("%H:%M:%S"),'\n-----------------------')
     SO2Data, PM2_5Data, PM10Data, NO2Data, COData, OzData = extract_pollutantdata(pollutant_downloads_path)
-    pollutant_data_path = (os.path.join(path+r'\Data\Collated data'))
+    pollutant_data_path = (os.path.join(path+r'\Collated data'))
     SO2Data.to_csv(pollutant_data_path   + r'\SO2data.csv', index=False)
     PM2_5Data.to_csv(pollutant_data_path + r'\PM2_5data.csv', index=False)
     PM10Data.to_csv(pollutant_data_path  + r'\PM10data.csv', index=False)
