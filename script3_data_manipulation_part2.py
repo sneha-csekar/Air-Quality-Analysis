@@ -29,14 +29,15 @@ import numpy as np
 import os
 
 # Folder path for saving the collated datasets
-collated_data_path = r'C:\Users\sneha\Desktop\MISM 6212 Data Mining\Final project\Submission\Collated data'
+path = os.getcwd()
+collated_data_path = path + r'\Collated data'
 
 # -----------------------------------------------------------------
 # Area data collation
 # -----------------------------------------------------------------
 
 # Read the downloaded data files
-df_area= pd.read_csv(r"C:\Users\sneha\Desktop\MISM 6212 Data Mining\Final project\Submission\Downloaded data\Area data\county_complete.csv")
+df_area= pd.read_csv(path+r'\Downloaded data\Area data\county_complete.csv')
 df_area = df_area[df_area['state']=="Massachusetts"][['name','area_2010']].reset_index().drop(columns = 'index')
 df_area.columns = ['COUNTY','LAND_AREA']
 df_area['COUNTY'] = df_area['COUNTY'].map(lambda x: x.split(' ')[0]) 
@@ -52,7 +53,7 @@ df_area.to_csv(collated_data_path + r'\Area_data.csv', index=False)
 # -----------------------------------------------------------------
 
 # Provide the folder path for the downloaded population data files:
-pop_data_path = r'C:\Users\sneha\Desktop\MISM 6212 Data Mining\Final project\Submission\Downloaded data\Population data'
+pop_data_path = path + r'\Downloaded data\Population data'
 
 # Read the downloaded data files
 df_pop_till_2019 = pd.read_csv(pop_data_path + r'\cc-est2019-agesex-25.csv')
@@ -94,7 +95,7 @@ df_pop.to_csv(collated_data_path + r'\Population_data.csv', index=False)
 # Weather data collation
 # -----------------------------------------------------------------
 # Provide folder path for the downloaded weather data files
-weather_data_path = r'C:\Users\sneha\Desktop\MISM 6212 Data Mining\Final project\Submission\Downloaded data\Weather data'
+weather_data_path = path + r'\Downloaded data\Weather data'
 
 dirListing = os.listdir(weather_data_path)
 df_weather = pd.DataFrame()
